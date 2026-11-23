@@ -1,8 +1,12 @@
 package app.brittodev.canvas.canvasElements
 
+import androidx.compose.animation.core.EaseInBack
+import androidx.compose.animation.core.EaseInCirc
+import androidx.compose.animation.core.EaseInOut
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectDragGestures
@@ -13,6 +17,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -21,6 +26,8 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
 import kotlin.math.PI
 import kotlin.math.atan2
+import kotlin.math.cos
+import kotlin.math.sin
 
 
 @Composable
@@ -31,9 +38,8 @@ fun CircularVolumeKnob(
     var volumeLevel by remember { mutableStateOf(volume) }
     val animatedVolumeLevel by animateFloatAsState(
         targetValue = volumeLevel,
-        animationSpec = spring(
-            dampingRatio = Spring.DampingRatioHighBouncy,
-            stiffness = Spring.StiffnessLow
+        animationSpec = tween(
+            durationMillis = 200
         )
     )
     Canvas(
@@ -51,7 +57,12 @@ fun CircularVolumeKnob(
                 }
             }
     ) {
-        inset(12.dp.toPx()) {
+        inset(50.dp.toPx()) {
+
+            val radius = size.minDimension / 2f
+            val thumbX = center.x + radius * cos((360*animatedVolumeLevel-90f)*(PI/180)).toFloat()
+            val thumbY = center.y + radius * sin((360*animatedVolumeLevel-90f)*(PI/180)).toFloat()
+
             drawCircle(
                 color = Color.Gray,
                 style = Stroke(15f)
@@ -62,6 +73,11 @@ fun CircularVolumeKnob(
                 sweepAngle = 360 * animatedVolumeLevel,
                 useCenter = false,
                 style = Stroke(width = 15f, cap = StrokeCap.Round)
+            )
+            drawCircle(
+                color = Color.Cyan,
+                radius = 20.dp.toPx(),
+                center = Offset(thumbX,thumbY)
             )
         }
     }
