@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import app.brittodev.canvas.canvasElements.CallButtonCanvas
 import app.brittodev.canvas.canvasElements.CircularVolumeKnob
+import app.brittodev.canvas.canvasElements.ToggleButtonCanvas
 
 @Composable
 @Preview(
@@ -40,7 +41,8 @@ fun App() {
             },
         contentAlignment = Alignment.Center
     ) {
-        CircularVolumeKnob(volume = 0f)
+        ToggleButtonCanvas()
+//        CircularVolumeKnob(volume = 0f)
 //        CallButtonCanvas(radius)
 //        Icon(
 //            imageVector = Icons.Default.Call,
