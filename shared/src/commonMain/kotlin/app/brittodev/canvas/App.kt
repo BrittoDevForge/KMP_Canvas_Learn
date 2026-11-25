@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import app.brittodev.canvas.canvasElements.CallButtonCanvas
 import app.brittodev.canvas.canvasElements.CircularVolumeKnob
+import app.brittodev.canvas.canvasElements.MusicControllerCanvas
 import app.brittodev.canvas.canvasElements.ToggleButtonCanvas
 
 @Composable
@@ -41,7 +42,8 @@ fun App() {
             },
         contentAlignment = Alignment.Center
     ) {
-        ToggleButtonCanvas()
+        MusicControllerCanvas()
+//        ToggleButtonCanvas()
 //        CircularVolumeKnob(volume = 0f)
 //        CallButtonCanvas(radius)
 //        Icon(
