@@ -16,6 +16,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import app.brittodev.canvas.canvasElements.CallButtonCanvas
+import app.brittodev.canvas.canvasElements.CircularBatteryRingCanvas
 import app.brittodev.canvas.canvasElements.CircularVolumeKnob
 import app.brittodev.canvas.canvasElements.FingerprintScannerComposable
 import app.brittodev.canvas.canvasElements.MusicControllerCanvas
@@ -45,7 +46,8 @@ fun App() {
         contentAlignment = Alignment.Center
     ) {
 
-        RadarScannerCanvas()
+        CircularBatteryRingCanvas()
+//        RadarScannerCanvas()
 //        FingerprintScannerComposable()
 //        MusicControllerCanvas()
 //        ToggleButtonCanvas()
